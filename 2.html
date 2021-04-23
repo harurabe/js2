@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+	<meta charset='utf-8'>
+	<title>Assignment 2</title>
+</head>
+    <body>
+        FizzNum: <input type='value' id='fizznum' placeholder='整数を入力してください'><br>
+        BuzzNum: <input type='value' id='buzznum' placeholder='整数を入力してください'><br>
+
+        <button id='execute'>実行</button>
+        <p id='newText'></p>
+
+        <script>
+
+            const execute = document.getElementById('execute');
+            execute.addEventListener('click', show); 
+            
+            function show(){
+                const fizz = document.getElementById('fizznum').value;
+                const buzz = document.getElementById('buzznum').value;
+
+                // Float変換した際に、整数型でない場合はエラーを表示する
+                if (!Number.isInteger(parseFloat(fizz)) || !Number.isInteger(parseFloat(buzz))) {
+                    document.getElementById('newText').innerHTML += 'ERROR: The inputs did not match expected format.' + '<br>';
+                }
+                else {
+
+                    for (let i = 1; i <= 99; i++)
+                    {
+                        if (i % fizz === 0 && i % buzz === 0) {
+                            document.getElementById('newText').innerHTML += 'Fizz Buzz ' + i + '<br>';
+                        } else if (i % fizz === 0) {
+                            document.getElementById('newText').innerHTML += 'Fizz ' + i + '<br>';
+                        } else if (i % buzz === 0) {
+                            document.getElementById('newText').innerHTML += 'Buzz ' + i + '<br>';
+                        }
+                    } 
+                }
+            }
+        </script>
+    </body>
+    </html>
